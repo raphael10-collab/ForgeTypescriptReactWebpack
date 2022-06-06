@@ -76,7 +76,7 @@
                   "html": "./src/app/index.html",
                   "js": "./src/app/renderer.ts",
                   "preload": {
-                    "js": "./src/app/preload.ts"
+                    "js": "./src/main/preload/preload.ts"
                   },
                   "name": "main_window"
                 }
