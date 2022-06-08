@@ -37,6 +37,26 @@
           }
         },
         {
+          "name": "@electron-forge/maker-flatpak",
+          "config": {
+            "options": {
+              "categories": [
+                "Testing"
+              ]
+            }
+          }
+        },
+        {
+          "name": "@electron-forge/maker-snap",
+          "config": {
+            "features": {
+              "audio": true,
+              "video": true
+            },
+            "summary": "Pretty Awesome"
+          }
+        },
+        {
           "name": "@electron-forge/maker-zip"
         },
         {
@@ -77,13 +97,11 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "@electron-forge/plugin-electronegativity": "^6.0.0-beta.63",
     "@electron-forge/plugin-webpack": "6.0.0-beta.63",
-    "@types/better-sqlite3": "^7.5.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/webpack-asset-relocator-loader": "1.7.0",
-    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.0.0",
     "electron": "17",
     "eslint": "^8.0.1",
@@ -96,7 +114,6 @@
   },
   "dependencies": {
     "assert": "^2.0.0",
-    "better-sqlite3-multiple-ciphers": "^7.5.2",
     "buffer": "^6.0.3",
     "electron-squirrel-startup": "^1.0.0",
     "https-browserify": "^1.0.0",
