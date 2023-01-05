@@ -4,7 +4,6 @@ import { app, BrowserWindow } from 'electron';
 // whether you're running in development or production).
 
 import * as path from 'path'
-import * as fs from 'fs'
 
 import isDev from 'electron-is-dev'
 
@@ -42,9 +41,6 @@ const createWindow = (): void => {
   // /home/raphy/ForgeTypescriptReactWebpack/out/forgetypescriptreactwebpack-linux-x64/resources/app/.webpack/renderer/main_window
 
   // and load the index.html of the app.
-  //mainWindow.loadURL(isDev ? MAIN_WINDOW_WEBPACK_ENTRY : `file://${path.join(__dirname, '../renderer/main_window/index.html')}`)
-  //mainWindow.loadURL(isDev ? MAIN_WINDOW_WEBPACK_ENTRY : `file://${path.join(__dirname,'renderer','main_window','index.html')}`)
-  
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
 
@@ -87,5 +83,5 @@ const infopiecesDbpath = isEnvDevelopment
   ? path.join(app.getAppPath(), "src", "data", "infopieces.db")
   : path.join(app.getAppPath(), ".webpack", "data", "infopieces.db")
 
-let infopiecesDb = require('better-sqlite3-multiple-ciphers')(infopiecesDbpath, { verbose: console.log })
+const infopiecesDb = require('better-sqlite3-multiple-ciphers')(infopiecesDbpath, { verbose: console.log })
 infopiecesDb.pragma(`cipher='sqlcipher'`)
