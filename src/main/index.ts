@@ -6,6 +6,8 @@ import { app, BrowserWindow } from 'electron';
 import * as path from 'path'
 import * as fs from 'fs'
 
+import isDev from 'electron-is-dev'
+
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
@@ -25,11 +27,32 @@ const createWindow = (): void => {
     }
   });
 
+  //console.log(path.join(__dirname,'../renderer/main_window/index.html'))
+
+  //console.log(path.join(__dirname,'renderer','main_window','index.html'))
+
+
+  console.log("MAIN_WINDOW_WEBPACK_ENTRY: ", MAIN_WINDOW_WEBPACK_ENTRY)
+  
+
+  // OUTPUT:
+  // /home/raphy/ForgeTypescriptReactWebpack/.webpack/renderer/main_window/index.html
+
+  // CORRECT: 
+  // /home/raphy/ForgeTypescriptReactWebpack/out/forgetypescriptreactwebpack-linux-x64/resources/app/.webpack/renderer/main_window
+
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  //mainWindow.loadURL(isDev ? MAIN_WINDOW_WEBPACK_ENTRY : `file://${path.join(__dirname, '../renderer/main_window/index.html')}`)
+  //mainWindow.loadURL(isDev ? MAIN_WINDOW_WEBPACK_ENTRY : `file://${path.join(__dirname,'renderer','main_window','index.html')}`)
+  
+
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (isDev ) {
+    mainWindow.webContents.openDevTools();
+  }
 };
 
 // This method will be called when Electron has finished
