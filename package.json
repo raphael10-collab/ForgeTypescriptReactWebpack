@@ -5,15 +5,36 @@
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
+    "rebuild-sqlite3": "electron-rebuild -f -w better-sqlite3",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "pack": "electron-builder -wl --dir",
+    "dist": "electron-builder -wl",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
+  "postinstall": "electron-builder install-app-deps",
   "keywords": [],
   "author": "raphy",
   "license": "UNLICENSED",
+  "build": {
+    "appId": "forgetypescriptreactwebpack",
+    "productName": "forgetypescriptreactwebpack",
+    "dmg": {
+      "title": "forgetypescriptreactwebpack"
+    },
+    "mac": {
+      "category": "forgetypescriptreactwebpack.app.category.type"
+    },
+    "nodeGypRebuild": "true",
+    "win": {
+      "target": "portable"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -27,7 +48,9 @@
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "linux",
+            "windows"
           ]
         },
         {
@@ -86,6 +109,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.0.0",
     "electron": "19",
+    "electron-builder": "^23.6.0",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.25.0",
     "fork-ts-checker-webpack-plugin": "^6.0.1",
